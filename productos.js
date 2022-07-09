@@ -6,7 +6,7 @@ class Productos {
     }
 
     async agregar(nombre, descripcion, codigo, foto, timestamp, price, stock){
-        if(this.productos.length==0){
+        if(this.productos.length == 0){
             const elemento = {
                 nombre,
                 price,
@@ -18,7 +18,7 @@ class Productos {
                 id:1
             }
             this.productos.push(elemento)
-            await escribir('dataProductos',this.productos)
+            await escribir('dataProductos', this.productos)
             return elemento
         }else{
            const lastIndex = this.productos[this.productos.length-1].id
@@ -34,14 +34,14 @@ class Productos {
                 id:Index
             }
             this.productos.push(elemento)
-            await escribir('dataProductos',this.productos)
+            await escribir('dataProductos', this.productos)
             return elemento
         }
     }
 
     async getById(id){
         this.productos = await leer('dataProductos')
-        const elemento = this.productos.filter(producto=> producto.id === id)
+        const elemento = this.productos.filter(producto => producto.id === id)
         return elemento   
     }
 

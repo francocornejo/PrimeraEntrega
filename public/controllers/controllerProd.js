@@ -24,11 +24,12 @@ const borrarProd = async (req, res) => {
     const param = req.params.id
     
     if(!isNumber(param)|| !param){
-        return res.json({ error: "El parámetro no es un número o el id no existe" })
+        return res.json(
+            { error: "El parámetro no es un número o el id no existe" }
+        )
     }
     await prodNuevo.deleteById(param)
     res.json(await prodNuevo.getAll())
-
 } 
 
 const modificarProd = (req, res) => {
